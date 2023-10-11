@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import CounterButton from '../components/CounterButton';
 
 export default function Home() {
@@ -8,11 +8,13 @@ export default function Home() {
     const incrementCount = useCallback(() => {
         setCount(prevCount => prevCount + 1);
     }, []);
-
+    const memorizedBtn = useMemo(()=>{
+        return <CounterButton increment={incrementCount} label="Increment" />;
+    },[])
     return (
         <div>
             <h1>Count: {count}</h1>
-            <CounterButton increment={incrementCount} /><br></br>
+            {memorizedBtn}<br></br>
             <button onClick={() => setDummyState(prev => prev + 1)}>Change Dummy State</button>
         </div>
     );
