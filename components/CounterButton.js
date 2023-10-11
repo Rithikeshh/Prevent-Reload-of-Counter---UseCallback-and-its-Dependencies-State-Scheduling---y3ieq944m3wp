@@ -1,12 +1,8 @@
-import React,{useMemo, memo} from 'react';
+import React, { memo } from 'react';
 
-const memoCounterButton = memo(function CounterButton({increment}) {
+function CounterButton({increment}) {
      /*DO NOT EDIT THIS LINE */ console.log("CounterButton rendered!"); //DO NOT edit this line 
-     return(
-          <button onClick={increment}>
-               increment
-          </button>
-     )
+     return <button onClick={increment}>Increment</button>
 }
-)
-export default memoCounterButton
+
+export default memo(CounterButton);
